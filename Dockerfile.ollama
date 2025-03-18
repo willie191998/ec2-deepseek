@@ -1,0 +1,10 @@
+FROM ollama/ollama
+
+# Create script file
+RUN echo '#!/bin/sh\nollama serve &\nsleep 10\nollama pull deepseek-r1:7b\nwait' > /start-ollama.sh
+
+# Make executable
+RUN chmod +x /start-ollama.sh
+
+# Set as entrypoint
+ENTRYPOINT ["/start-ollama.sh"]

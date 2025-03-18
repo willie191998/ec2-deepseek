@@ -1,0 +1,179 @@
+nohup: ignoring input
+2025-02-26 09:11:11,188 - fastapi-ollama - INFO - Starting FastAPI application on 0.0.0.0:8000
+INFO:     Started server process [3795]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2025-02-26 09:11:21,701 - fastapi-ollama - INFO - Health check endpoint called
+INFO:     127.0.0.1:43442 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48966 - "GET /models HTTP/1.1" 200 OK
+INFO:     105.113.12.88:22583 - "POST /generate HTTP/1.1" 422 Unprocessable Entity
+INFO:     105.113.12.88:22584 - "POST /generate HTTP/1.1" 422 Unprocessable Entity
+2025-02-26 09:18:49,092 - fastapi-ollama - INFO - Health check endpoint called
+INFO:     105.113.12.88:22589 - "GET /health HTTP/1.1" 200 OK
+2025-02-26 09:19:06,959 - fastapi-ollama - INFO - Received prompt request for model 'deepseek-r1:7b': Tell me about black holes...
+2025-02-26 09:19:06,959 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 09:19:06,959 - fastapi-ollama - INFO - Request payload: {"model": "deepseek-r1:7b", "prompt": "Tell me about black holes", "stream": false, "max_tokens": 300, "temperature": 0.4}
+2025-02-26 09:24:07,061 - fastapi-ollama - ERROR - Exception: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 461, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 280, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/lib/python3.7/socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 499, in send
+    timeout=timeout,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 358, in _raise_timeout
+    self, url, "Read timed out. (read timeout=%s)" % timeout_value
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fastapi_ollama.py", line 52, in generate
+    timeout=300  # Increased timeout
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 578, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+INFO:     105.113.12.88:22591 - "POST /generate HTTP/1.1" 500 Internal Server Error
+INFO:     105.113.12.88:22592 - "GET /models HTTP/1.1" 200 OK
+2025-02-26 09:26:08,484 - fastapi-ollama - INFO - Received prompt request for model 'deepseek-r1:7b': Tell me about black holes...
+2025-02-26 09:26:08,485 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 09:26:08,485 - fastapi-ollama - INFO - Request payload: {"model": "deepseek-r1:7b", "prompt": "Tell me about black holes", "stream": false, "max_tokens": 300, "temperature": 0.4}
+2025-02-26 09:31:08,565 - fastapi-ollama - ERROR - Exception: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 461, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 280, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/lib/python3.7/socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 499, in send
+    timeout=timeout,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 358, in _raise_timeout
+    self, url, "Read timed out. (read timeout=%s)" % timeout_value
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fastapi_ollama.py", line 52, in generate
+    timeout=300  # Increased timeout
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 578, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+INFO:     105.113.12.88:22594 - "POST /generate HTTP/1.1" 500 Internal Server Error
+2025-02-26 09:38:01,904 - fastapi-ollama - INFO - Received prompt request for model 'deepseek-r1:7b': say something about you in 20 words...
+2025-02-26 09:38:01,904 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 09:38:01,904 - fastapi-ollama - INFO - Request payload: {"model": "deepseek-r1:7b", "prompt": "say something about you in 20 words", "stream": false, "max_tokens": 300, "temperature": 0.4}
+2025-02-26 09:39:35,334 - fastapi-ollama - INFO - Response status: 200
+2025-02-26 09:39:35,334 - fastapi-ollama - INFO - Response text: {"model":"deepseek-r1:7b","created_at":"2025-02-26T09:39:34.642489285Z","response":"\u003cthink\u003e\nOkay, so I need to say something about me in 20 words. Hmm, let's see. The user provided an example response: \"I'm a creative and curious individual with a passion for storytelling and learning.\" That's pretty concise.\n\nFirst, I should identify key aspects of myself. Maybe hobbies or interests? If I don't have specific ones, perhaps reflecting on strengths like creativity, critical thinking...
+INFO:     105.113.12.88:22600 - "POST /generate HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     57.152.56.108:54038 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     8.219.8.195:36178 - "GET / HTTP/1.1" 404 Not Found
+INFO:     8.219.8.195:36194 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     60.191.125.35:56540 - "HEAD http%3A//112.124.42.80%3A63435/ HTTP/1.1" 404 Not Found
+INFO:     123.160.221.130:47700 - "GET / HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+2025-02-26 19:01:19,069 - fastapi-ollama - INFO - Received prompt request for model 'deepseek-r1:7b': say hi...
+2025-02-26 19:01:19,069 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 19:01:19,069 - fastapi-ollama - INFO - Request payload: {"model": "deepseek-r1:7b", "prompt": "say hi", "stream": false, "max_tokens": 300, "temperature": 0.4}
+2025-02-26 19:01:30,911 - fastapi-ollama - INFO - Response status: 200
+2025-02-26 19:01:30,911 - fastapi-ollama - INFO - Response text: {"model":"deepseek-r1:7b","created_at":"2025-02-26T19:01:30.192820807Z","response":"\u003cthink\u003e\n\n\u003c/think\u003e\n\nHello! How can I assist you today? 😊","done":true,"done_reason":"stop","context":[151644,36790,15588,151645,151648,271,151649,271,9707,0,2585,646,358,7789,498,3351,30,26525,232],"total_duration":11121254527,"load_duration":4082462869,"prompt_eval_count":5,"prompt_eval_duration":1165000000,"eval_count":16,"eval_duration":5872000000}...
+INFO:     105.116.14.51:48488 - "POST /generate HTTP/1.1" 200 OK
+INFO:     173.239.220.30:36096 - "GET / HTTP/1.1" 404 Not Found
+INFO:     86.106.74.252:50358 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     134.199.165.233:38172 - "GET / HTTP/1.1" 404 Not Found
+INFO:     134.199.165.233:38184 - "GET /login HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     104.234.115.196:51860 - "GET / HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:42590 - "GET /manage/account/login HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:36190 - "GET /admin/index.html HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:54470 - "GET /index.html HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:56326 - "GET /%2BCSCOE%2B/logon.html HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:48936 - "GET /cgi-bin/login.cgi HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:46086 - "GET /login.htm HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:43494 - "GET /login.html HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:43944 - "GET /login.jsp HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:39870 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:43250 - "GET /doc/index.html HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:52518 - "GET /remote/login HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:49182 - "GET //admin/login.asp HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:33292 - "GET /web/ HTTP/1.1" 404 Not Found
+INFO:     104.234.115.196:37560 - "GET //webpages/login.html HTTP/1.1" 404 Not Found
+INFO:     8.219.10.146:57840 - "GET /.env HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     194.85.251.53:51782 - "CONNECT ifconfig.co%3A443 HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     205.210.31.176:60736 - "GET / HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3795]

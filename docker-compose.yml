@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  fastapi_app:
+    build: .
+    container_name: fastapi_service
+    restart: always
+    network_mode: "host"
+    ports:
+      - "8080:8080"  # Map port 8080 on the host to 8080 inside the container
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # Add this line to connect to host
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fastapi.rule=Host(`superearner.online`)"
+      - "traefik.http.routers.fastapi.entrypoints=websecure"
+      - "traefik.http.routers.fastapi.tls.certresolver=myresolver"
+      - "traefik.http.services.fastapi.loadbalancer.server.port=8080"  # Explicitly tell Traefik the correct port
+    environment:
+      - PORT=8080  # Pass the port to FastAPI
+
+networks:
+  traefik_proxy:
+    external: true
+

@@ -1,0 +1,256 @@
+2025-02-26 08:13:37,248 - fastapi-ollama - INFO - Starting FastAPI application on 0.0.0.0:8000
+2025-02-26 08:13:37,251 - fastapi-ollama - INFO - Ollama is available: {'version': '0.5.12'}
+2025-02-26 08:15:23,886 - fastapi-ollama - INFO - Received prompt request: Tell me about AI...
+2025-02-26 08:15:23,886 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 08:15:23,888 - fastapi-ollama - ERROR - Ollama error: 404 - {"error":"model 'llama3' not found"}
+2025-02-26 08:15:23,888 - fastapi-ollama - ERROR - Exception: 
+2025-02-26 08:16:56,718 - fastapi-ollama - INFO - Health check endpoint called
+2025-02-26 08:19:35,065 - fastapi-ollama - INFO - Starting FastAPI application on 0.0.0.0:8000
+2025-02-26 08:19:35,068 - fastapi-ollama - INFO - Ollama is available: {'version': '0.5.12'}
+2025-02-26 08:21:34,954 - fastapi-ollama - INFO - Received prompt request: Tell me about AI...
+2025-02-26 08:21:34,954 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 08:21:34,957 - fastapi-ollama - ERROR - Ollama error: 404 - {"error":"model 'llama3' not found"}
+2025-02-26 08:21:34,957 - fastapi-ollama - ERROR - Exception: 
+2025-02-26 08:27:14,401 - fastapi-ollama - INFO - Received prompt request: Hello...
+2025-02-26 08:27:14,402 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 08:27:14,404 - fastapi-ollama - ERROR - Ollama error: 404 - {"error":"model 'llama3' not found"}
+2025-02-26 08:27:14,405 - fastapi-ollama - ERROR - Exception: 
+2025-02-26 08:27:18,244 - fastapi-ollama - INFO - Received prompt request: Tell me about AI...
+2025-02-26 08:27:18,244 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 08:27:18,246 - fastapi-ollama - ERROR - Ollama error: 404 - {"error":"model 'llama3' not found"}
+2025-02-26 08:27:18,247 - fastapi-ollama - ERROR - Exception: 
+2025-02-26 08:32:09,249 - fastapi-ollama - INFO - Starting FastAPI application on 0.0.0.0:8000
+2025-02-26 08:32:38,527 - fastapi-ollama - INFO - Health check endpoint called
+2025-02-26 08:33:03,602 - fastapi-ollama - INFO - Received prompt request for model 'deepseek-r1:7b': Tell me about AI...
+2025-02-26 08:33:03,602 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 08:33:03,602 - fastapi-ollama - INFO - Request payload: {"model": "deepseek-r1:7b", "prompt": "Tell me about AI", "stream": false}
+2025-02-26 08:35:03,701 - fastapi-ollama - ERROR - Exception: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 461, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 280, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/lib/python3.7/socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 499, in send
+    timeout=timeout,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 358, in _raise_timeout
+    self, url, "Read timed out. (read timeout=%s)" % timeout_value
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fastapi_ollama.py", line 50, in generate
+    timeout=120
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 578, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)
+2025-02-26 09:02:02,350 - fastapi-ollama - INFO - Received prompt request for model 'deepseek-r1:7b': Tell me about black holes...
+2025-02-26 09:02:02,350 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 09:02:02,350 - fastapi-ollama - INFO - Request payload: {"model": "deepseek-r1:7b", "prompt": "Tell me about black holes", "stream": false}
+2025-02-26 09:04:02,449 - fastapi-ollama - ERROR - Exception: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 461, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 280, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/lib/python3.7/socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 499, in send
+    timeout=timeout,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 358, in _raise_timeout
+    self, url, "Read timed out. (read timeout=%s)" % timeout_value
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fastapi_ollama.py", line 50, in generate
+    timeout=REQUEST_TIMEOUT  # Increased timeout
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 578, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)
+2025-02-26 09:11:11,188 - fastapi-ollama - INFO - Starting FastAPI application on 0.0.0.0:8000
+2025-02-26 09:11:21,701 - fastapi-ollama - INFO - Health check endpoint called
+2025-02-26 09:18:49,092 - fastapi-ollama - INFO - Health check endpoint called
+2025-02-26 09:19:06,959 - fastapi-ollama - INFO - Received prompt request for model 'deepseek-r1:7b': Tell me about black holes...
+2025-02-26 09:19:06,959 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 09:19:06,959 - fastapi-ollama - INFO - Request payload: {"model": "deepseek-r1:7b", "prompt": "Tell me about black holes", "stream": false, "max_tokens": 300, "temperature": 0.4}
+2025-02-26 09:24:07,061 - fastapi-ollama - ERROR - Exception: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 461, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 280, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/lib/python3.7/socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 499, in send
+    timeout=timeout,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 358, in _raise_timeout
+    self, url, "Read timed out. (read timeout=%s)" % timeout_value
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fastapi_ollama.py", line 52, in generate
+    timeout=300  # Increased timeout
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 578, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+2025-02-26 09:26:08,484 - fastapi-ollama - INFO - Received prompt request for model 'deepseek-r1:7b': Tell me about black holes...
+2025-02-26 09:26:08,485 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 09:26:08,485 - fastapi-ollama - INFO - Request payload: {"model": "deepseek-r1:7b", "prompt": "Tell me about black holes", "stream": false, "max_tokens": 300, "temperature": 0.4}
+2025-02-26 09:31:08,565 - fastapi-ollama - ERROR - Exception: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 461, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 280, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/lib/python3.7/socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 499, in send
+    timeout=timeout,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 358, in _raise_timeout
+    self, url, "Read timed out. (read timeout=%s)" % timeout_value
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fastapi_ollama.py", line 52, in generate
+    timeout=300  # Increased timeout
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/requests/adapters.py", line 578, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+2025-02-26 09:38:01,904 - fastapi-ollama - INFO - Received prompt request for model 'deepseek-r1:7b': say something about you in 20 words...
+2025-02-26 09:38:01,904 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 09:38:01,904 - fastapi-ollama - INFO - Request payload: {"model": "deepseek-r1:7b", "prompt": "say something about you in 20 words", "stream": false, "max_tokens": 300, "temperature": 0.4}
+2025-02-26 09:39:35,334 - fastapi-ollama - INFO - Response status: 200
+2025-02-26 09:39:35,334 - fastapi-ollama - INFO - Response text: {"model":"deepseek-r1:7b","created_at":"2025-02-26T09:39:34.642489285Z","response":"\u003cthink\u003e\nOkay, so I need to say something about me in 20 words. Hmm, let's see. The user provided an example response: \"I'm a creative and curious individual with a passion for storytelling and learning.\" That's pretty concise.\n\nFirst, I should identify key aspects of myself. Maybe hobbies or interests? If I don't have specific ones, perhaps reflecting on strengths like creativity, critical thinking...
+2025-02-26 19:01:19,069 - fastapi-ollama - INFO - Received prompt request for model 'deepseek-r1:7b': say hi...
+2025-02-26 19:01:19,069 - fastapi-ollama - INFO - Sending request to Ollama at http://localhost:11434/api/generate
+2025-02-26 19:01:19,069 - fastapi-ollama - INFO - Request payload: {"model": "deepseek-r1:7b", "prompt": "say hi", "stream": false, "max_tokens": 300, "temperature": 0.4}
+2025-02-26 19:01:30,911 - fastapi-ollama - INFO - Response status: 200
+2025-02-26 19:01:30,911 - fastapi-ollama - INFO - Response text: {"model":"deepseek-r1:7b","created_at":"2025-02-26T19:01:30.192820807Z","response":"\u003cthink\u003e\n\n\u003c/think\u003e\n\nHello! How can I assist you today? 😊","done":true,"done_reason":"stop","context":[151644,36790,15588,151645,151648,271,151649,271,9707,0,2585,646,358,7789,498,3351,30,26525,232],"total_duration":11121254527,"load_duration":4082462869,"prompt_eval_count":5,"prompt_eval_duration":1165000000,"eval_count":16,"eval_duration":5872000000}...
